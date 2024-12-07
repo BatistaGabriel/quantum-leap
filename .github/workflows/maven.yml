@@ -41,11 +41,12 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
 
-    - name: Docker Compose Up
-      run: docker-compose up --build
+    - name: Docker Compose Up and Wait
+      run: |
+        docker-compose up -d
+        while ! nc -z postgres 5432; do echo "waiting for postgres..."; sleep 1; done
       env:
         COMPOSE_PROJECT_NAME: "quantum-leap"
-        WAIT_FOR_SERVICES: "postgres:5432"
 
     - name: Run Tests
       run: mvn test
