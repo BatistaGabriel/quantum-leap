@@ -34,6 +34,7 @@ public class EventService {
         event.setEventUrl(data.eventUrl());
         event.setDate(new Date(data.date()));
         event.setImageUrl(imgUrl);
+        event.setRemote(data.remote());
 
         return event;
     }
