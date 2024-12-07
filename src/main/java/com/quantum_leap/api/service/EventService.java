@@ -3,6 +3,7 @@ package com.quantum_leap.api.service;
 import com.amazonaws.services.s3.AmazonS3;
 import com.quantum_leap.api.domain.event.Event;
 import com.quantum_leap.api.domain.event.EventRequestDTO;
+import com.quantum_leap.api.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class EventService {
     private AmazonS3 amazonS3Client;
     @Value("${aws.bucket.name}")
     private String bucketName;
+    @Autowired
+    private EventRepository repository;
 
     public Event createEvent(EventRequestDTO data){
         String imgUrl = null;
@@ -35,6 +38,8 @@ public class EventService {
         event.setDate(new Date(data.date()));
         event.setImageUrl(imgUrl);
         event.setRemote(data.remote());
+
+        repository.save(event);
 
         return event;
     }
