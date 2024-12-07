@@ -100,6 +100,10 @@
 					<target>21</target>
 					<annotationProcessorPaths>
 						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${mapstruct.version}</version>
@@ -143,4 +147,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
