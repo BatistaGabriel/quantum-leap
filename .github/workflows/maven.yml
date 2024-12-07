@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI with Maven and Docker
 
 on:
   push:
@@ -24,8 +24,28 @@ jobs:
     - name: Clean Maven Cache
       run: mvn dependency:purge-local-repository
 
+    - name: Configure Lombok
+      run: mvn -DskipTests clean install -Dmaven.javadoc.skip=true -Dspotbugs.skip=true
+
     - name: Build with Maven
       run: mvn -B clean package --file pom.xml
 
     - name: Debug Maven Dependencies
       run: mvn dependency:tree
+
+    - name: Docker Build and Run
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: false
+      env:
+        DOCKER_BUILDKIT: 1
+
+    - name: Docker Compose Up
+      run: docker-compose up --build
+      env:
+        COMPOSE_PROJECT_NAME: "quantum-leap"
+        WAIT_FOR_SERVICES: "postgres:5432"
+
+    - name: Run Tests
+      run: mvn test
