@@ -27,6 +27,11 @@ jobs:
     - name: Configure Lombok
       run: mvn -DskipTests clean install -Dmaven.javadoc.skip=true -Dspotbugs.skip=true
 
+    - name: Install Docker and Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io docker-compose
+
     - name: Docker Build
       uses: docker/build-push-action@v3
       with:
