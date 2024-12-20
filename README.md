@@ -3,7 +3,15 @@ The backend of a tech events platform
 
 ## Status
 
-[![CodeQL Advanced - Java](https://github.com/BatistaGabriel/quantum-leap/actions/workflows/codeql.yml/badge.svg)](https://github.com/BatistaGabriel/quantum-leap/actions/workflows/codeql.yml) [![Java CI with Maven](https://github.com/BatistaGabriel/quantum-leap/actions/workflows/maven.yml/badge.svg)](https://github.com/BatistaGabriel/quantum-leap/actions/workflows/maven.yml)
+[![CodeQL Advanced - Java](https://github.com/BatistaGabriel/quantum-leap/actions/workflows/codeql.yml/badge.svg)](https://github.com/BatistaGabriel/quantum-leap/actions/workflows/codeql.yml)
+
+## Running the project
+
+Before running the project using your preferred method, either through the IDE or the command line, ensure you start the database container by executing the following command:
+
+```bash
+docker compose up -d
+```
 
 ## SDK Version
 
