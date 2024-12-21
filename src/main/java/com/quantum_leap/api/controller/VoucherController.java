@@ -1,6 +1,5 @@
 package com.quantum_leap.api.controller;
 
-import com.quantum_leap.api.domain.event.Event;
 import com.quantum_leap.api.domain.voucher.Voucher;
 import com.quantum_leap.api.domain.voucher.VoucherRequestDTO;
 import com.quantum_leap.api.service.VoucherService;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.UUID;
 
 @RestController

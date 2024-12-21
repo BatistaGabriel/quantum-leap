@@ -63,7 +63,7 @@ public class EventService {
                 event.getRemote(),
                 event.getEventUrl(),
                 event.getImageUrl()
-        )).toList();
+        )).stream().toList();
     }
 
     private String uploadImage(MultipartFile multipartFile){
